@@ -45,7 +45,7 @@ view: statistics_bucket_outlier {
   }
 
   dimension: limits {
-    type: number
+    type: string
     sql: cast(${TABLE}.lower_limit as varchar(20)) || ' to ' || cast(${TABLE}.upper_limit as varchar(20));;
     }
 
