@@ -44,6 +44,11 @@ view: statistics_bucket_outlier {
     sql: ${TABLE}.time_window ;;
   }
 
+  dimension: limits {
+    type: number
+    sql: ${TABLE}.lower_limit || '-' || ${TABLE}.upper_limit;;
+  }
+
   dimension: upper_limit {
     type: number
     sql: ${TABLE}.upper_limit;;
