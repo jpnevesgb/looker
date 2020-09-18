@@ -44,28 +44,29 @@ view: statistics_bucket_outlier {
     sql: ${TABLE}.time_window ;;
   }
 
-  measure: upper_limit {
+  dimension: upper_limit {
     type: number
-    value_format_name: percent_2
     sql: ${TABLE}.upper_limit;;
   }
 
-  measure: lower_limit {
+  dimension: lower_limit {
     type: number
     sql: ${TABLE}.lower_limit ;;
   }
 
-  measure: abs_frequency {
-    type: number
-    sql: ${TABLE}.abs_frequency;;
-  }
 
-
-  measure: rel_frequency {
+  dimension: rel_frequency {
     type: number
     value_format_name: percent_2
     sql: ${TABLE}.rel_frequency;;
   }
+
+
+  measure: abs_frequency {
+    type: sum
+    sql: ${TABLE}.abs_frequency;;
+  }
+
 
   measure: count {
     type: count
