@@ -46,8 +46,8 @@ view: statistics_bucket_outlier {
 
   dimension: limits {
     type: number
-    sql: ${TABLE}.lower_limit || '-' || ${TABLE}.upper_limit;;
-  }
+    sql: cast(${TABLE}.lower_limit as varchar(20)) || ' to ' || cast(${TABLE}.upper_limit as varchar(20));;
+    }
 
   dimension: upper_limit {
     type: number
