@@ -60,8 +60,8 @@ view: statistics_bucket_outlier {
   }
 
 
-  dimension: rel_frequency {
-    type: number
+  measure: rel_frequency {
+    type: sum
     value_format_name: percent_2
     sql: ${TABLE}.rel_frequency;;
   }
