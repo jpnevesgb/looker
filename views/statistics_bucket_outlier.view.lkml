@@ -46,7 +46,9 @@ view: statistics_bucket_outlier {
 
   dimension: limits {
     type: string
-    sql: cast(${TABLE}.lower_limit as varchar(20)) || ' to ' || cast(${TABLE}.upper_limit as varchar(20));;
+    sql: case when ${TABLE}.category = 'BUCKET'
+    then cast(${TABLE}.lower_limit as varchar(20)) || ' to ' || cast(${TABLE}.upper_limit as varchar(20))
+    else ' < ' || cast(${TABLE}.lower_limit as varchar(20)) || ' or > ' || cast(${TABLE}.upper_limit as varchar(20));;
     }
 
   dimension: upper_limit {
