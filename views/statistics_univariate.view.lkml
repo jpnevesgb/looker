@@ -43,99 +43,99 @@ view: statistics_univariate {
   }
 
   measure: cv_value {
-    type: number
+    type: sum
     sql: ${TABLE}.cv_value ;;
   }
 
   measure: empty_value {
-    type: number
+    type: sum
     sql: ${TABLE}.empty_value ;;
   }
 
   measure: filled_value {
-    type: number
+    type: sum
     sql: ${TABLE}.filled_value ;;
   }
 
   measure: kurtosis_value {
-    type: number
+    type: sum
     sql: ${TABLE}.kurtosis_value ;;
   }
 
   measure: max_value {
-    type: number
+    type: sum
     sql: ${TABLE}.max_value ;;
   }
 
   measure: min_value {
-    type: number
+    type: sum
     sql: ${TABLE}.min_value ;;
   }
 
   measure: nulls_value {
-    type: number
+    type: sum
     sql: ${TABLE}.nulls_value ;;
   }
 
   measure: percentile1_value {
-    type: number
+    type: average
     sql: ${TABLE}.percentile1_value ;;
   }
 
 
   measure: percentile5_value {
-    type: number
+    type: average
     sql: ${TABLE}.percentile5_value ;;
   }
 
   measure: percentile25_value {
-    type: number
+    type: average
     sql: ${TABLE}.percentile25_value ;;
   }
 
   measure: percentile50_value {
-    type: number
+    type: average
     sql: ${TABLE}.percentile50_value ;;
   }
 
   measure: percentile75_value {
-    type: number
+    type: average
     sql: ${TABLE}.percentile75_value ;;
   }
 
   measure: percentile95_value {
-    type: number
+    type: average
     sql: ${TABLE}.percentile95_value ;;
   }
 
   measure: percentile99_value {
-    type: number
+    type: average
     sql: ${TABLE}.percentile99_value ;;
   }
 
   measure: psi_value {
-    type: number
+    type: average
     sql: ${TABLE}.psi_value ;;
   }
 
   measure: skewness_value {
-    type: number
+    type: average
     sql: ${TABLE}.skewness_value ;;
   }
 
   measure: stddev_value {
-    type: number
+    type: average
     sql: ${TABLE}.stddev_value ;;
   }
 
   measure: total_value {
-    type: number
+    type: average
     sql: ${TABLE}.total_value ;;
   }
 
 
   measure: avg_value {
-    type: number
+    type: average
     sql: ${TABLE}.avg_value ;;
   }
 
