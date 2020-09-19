@@ -61,7 +61,7 @@ view: statistics_bucket_outlier {
 
 
   measure: rel_frequency {
-    type: sum
+    type: average
     value_format_name: percent_2
     sql: ${TABLE}.rel_frequency;;
   }
