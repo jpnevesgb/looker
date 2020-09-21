@@ -1,6 +1,6 @@
 view: statistics_univariate {
   sql_table_name: monitoring.statistics_univariate ;;
-  suggestions: no
+  suggestions: yes
 
   dimension: var_key {
     type: string

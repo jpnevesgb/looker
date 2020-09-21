@@ -1,6 +1,6 @@
 view: statistics_bucket_outlier {
   sql_table_name: monitoring.statistics_bucket_outlier ;;
-  suggestions: no
+  suggestions: yes
 
 
   dimension: var_key {
