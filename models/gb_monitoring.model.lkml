@@ -12,9 +12,9 @@ persist_with: gb_monitoring_default_datagroup
 
 
 explore: statistics_univariate {
-  hidden: no
+  hidden: yes
 }
 
 explore: statistics_bucket_outlier {
-  hidden: no
+  hidden: yes
 }
