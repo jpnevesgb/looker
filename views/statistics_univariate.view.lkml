@@ -74,7 +74,7 @@ view: statistics_univariate {
 
   measure: nulls_value {
     type: sum
-    sql: ${TABLE}.nulls_value ;;
+    sql:case when  ${TABLE}.nulls_value < 0 then 0 else  ${TABLE}.nulls_value end  ;;
   }
 
   measure: percentile1_value {
