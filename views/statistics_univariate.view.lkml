@@ -139,6 +139,11 @@ view: statistics_univariate {
     sql: ${TABLE}.avg_value ;;
   }
 
+  measure: filled_different_zero_value {
+    type: sum
+    sql: ${TABLE}.filled_value -${TABLE}.empty_value ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
