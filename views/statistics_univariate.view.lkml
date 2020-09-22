@@ -137,6 +137,7 @@ view: statistics_univariate {
 
   measure: filled_different_zero_value {
     type: sum
+    value_format_name: decimal_1
     sql: ${TABLE}.filled_value -${TABLE}.empty_value ;;
   }
 
