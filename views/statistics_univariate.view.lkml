@@ -149,16 +149,18 @@ view: statistics_univariate {
   }
 
 
-  measure: diff_empty_values_from_last_period{
+  dimension: diff_empty_values_from_last_period{
     type: number
     value_format_name: percent_2
-    sql:  abs(
-              (LAG(${TABLE}.empty_value) OVER (PARTITION BY ${TABLE}.var_key ORDER BY ${TABLE}.period ASC)
+    sql:  case when empty_value = 0 then 0 else
+        abs(
+            (LAG(${TABLE}.empty_value) OVER (PARTITION BY ${TABLE}.var_key ORDER BY ${TABLE}.period ASC)
               /
               CAST(LAG(${TABLE}.total_value) OVER (PARTITION BY ${TABLE}.var_key ORDER BY ${TABLE}.period ASC) as double))
             /
-              (${TABLE}.empty_value / cast(${TABLE}.total_value as double))
+              (${TABLE}.empty_value / cast(${TABLE}.total_value as double))-1
             )
+         end
     ;;
   }
 
