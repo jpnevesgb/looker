@@ -142,9 +142,9 @@ view: statistics_univariate {
 
 
   measure: filled_different_zero_percent {
-    type: average
+    type: number
     value_format_name: percent_2
-    sql:  (${TABLE}.filled_value -${TABLE}.empty_value) / ${TABLE}.total_value  ;;
+    sql:  (${filled_different_zero_value}) /  ${total_value}  ;;
   }
 
   measure: count {
