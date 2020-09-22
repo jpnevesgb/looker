@@ -126,7 +126,6 @@ view: statistics_univariate {
 
   measure: total_value {
     type: sum
-    value_format: "double"
     sql: ${TABLE}.total_value ;;
   }
 
@@ -146,7 +145,7 @@ view: statistics_univariate {
   measure: filled_different_zero_percent {
     type: number
     value_format_name: percent_2
-    sql:  (${filled_different_zero_value}) /  ${total_value}  ;;
+    sql:  (${filled_different_zero_value}) /  cast(${total_value} as double) ;;
   }
 
   measure: count {
