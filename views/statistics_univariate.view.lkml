@@ -148,6 +148,15 @@ view: statistics_univariate {
     sql:  (${filled_different_zero_value}) /  cast(${total_value} as double) ;;
   }
 
+
+  measure: teste {
+    type: number
+    value_format_name: percent_2
+    sql:  LAG(${TABLE}.empty_value) OVER (PARTITION BY ${TABLE}.var_key ORDER BY ${TABLE}.period ASC) ;;
+  }
+
+
+
   measure: count {
     type: count
     drill_fields: []
