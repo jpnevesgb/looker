@@ -125,7 +125,7 @@ view: statistics_univariate {
   }
 
   measure: total_value {
-    type: average
+    type: sum
     sql: ${TABLE}.total_value ;;
   }
 
