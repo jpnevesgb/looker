@@ -111,6 +111,7 @@ view: statistics_univariate {
 
   measure: psi_value {
     type: average
+    value_format_name: decimal_2
     sql: ${TABLE}.psi_value ;;
   }
 
@@ -137,7 +138,6 @@ view: statistics_univariate {
 
   measure: filled_different_zero_value {
     type: sum
-
     sql: ${TABLE}.filled_value -${TABLE}.empty_value ;;
   }
 
