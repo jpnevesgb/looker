@@ -126,7 +126,7 @@ view: statistics_univariate {
 
   measure: total_value {
     type: sum
-    value_format_name: decimal_1
+    value_format: "double"
     sql: ${TABLE}.total_value ;;
   }
 
