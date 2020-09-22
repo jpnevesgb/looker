@@ -12,11 +12,6 @@ view: statistics_univariate {
     sql: ${TABLE}.bank ;;
   }
 
-  dimension: inference {
-    type: string
-    sql: ${TABLE}.inference ;;
-  }
-
   dimension: channel {
     type: string
     sql: ${TABLE}.channel ;;
@@ -42,10 +37,6 @@ view: statistics_univariate {
     sql: ${TABLE}.partner ;;
   }
 
-  measure: cv_value {
-    type: sum
-    sql: ${TABLE}.cv_value ;;
-  }
 
   measure: empty_value {
     type: sum
@@ -57,8 +48,13 @@ view: statistics_univariate {
     sql: ${TABLE}.filled_value ;;
   }
 
+  measure: cv_value {
+    type: average
+    sql: ${TABLE}.cv_value ;;
+  }
+
   measure: kurtosis_value {
-    type: sum
+    type: average
     sql: ${TABLE}.kurtosis_value ;;
   }
 
@@ -142,6 +138,13 @@ view: statistics_univariate {
   measure: filled_different_zero_value {
     type: sum
     sql: ${TABLE}.filled_value -${TABLE}.empty_value ;;
+  }
+
+
+  measure: filled_different_zero_percent {
+    type: average
+    value_format_name: percent_2
+    sql: ${TABLE}.filled_different_zero_value / ${TABLE}.total_value ;;
   }
 
   measure: count {
