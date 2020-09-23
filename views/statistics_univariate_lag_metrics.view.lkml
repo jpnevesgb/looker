@@ -51,6 +51,7 @@ view: statistics_univariate_lag_metrics {
   }
   measure: diff_empty_values_from_last_period {
     type: average
+    value_format_name: percent_2
     sql: ${TABLE}.diff_empty_values_from_last_period ;;
   }
 }
