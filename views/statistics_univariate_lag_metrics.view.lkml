@@ -8,6 +8,7 @@ view: statistics_univariate_lag_metrics {
         empty_value,
         total_value,
         nulls_value,
+        filled_values - empty_value,
         rel_frequency,
         case when empty_value = 0
            then 0
@@ -50,7 +51,7 @@ view: statistics_univariate_lag_metrics {
       on statistics_univariate.var_key = statistics_bucket_outlier.var_key
       and statistics_univariate.period = statistics_bucket_outlier.period
       and statistics_univariate.time_window = statistics_bucket_outlier.time_window
-      and statistics_bucket_outlier.category = 'BUCKET'
+      and statistics_bucket_outlier.category = 'OUTLIER'
     ;;
   }
 
