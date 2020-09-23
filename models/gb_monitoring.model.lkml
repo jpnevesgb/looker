@@ -19,3 +19,7 @@ explore: statistics_univariate {
 explore: statistics_bucket_outlier {
   hidden: no
 }
+
+explore: statistics_univariate_lag_metrics {
+  hidden: no
+}
