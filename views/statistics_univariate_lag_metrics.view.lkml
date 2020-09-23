@@ -50,7 +50,7 @@ view: statistics_univariate_lag_metrics {
     sql: ${TABLE}.total_value ;;
   }
   measure: diff_empty_values_from_last_period {
-    type: string
+    type: average
     sql: ${TABLE}.diff_empty_values_from_last_period ;;
   }
 }
