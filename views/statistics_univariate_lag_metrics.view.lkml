@@ -7,6 +7,7 @@ view: statistics_univariate_lag_metrics {
         time_window,
         empty_value,
         total_value,
+        nulls_value,
         case when empty_value = 0
            then 0
         else
@@ -18,7 +19,19 @@ view: statistics_univariate_lag_metrics {
              coalesce((empty_value / cast(total_value as double))
                       ,1)-1
         )
-        end AS diff_empty_values_from_last_period
+        end AS diff_empty_values_from_last_period,
+        case when nulls_value = 0
+           then 0
+        else
+           abs(
+             (LAG(nulls_value) OVER (PARTITION BY var_key,time_window ORDER BY period ASC)
+              /
+              CAST(LAG(total_value) OVER (PARTITION BY var_key,time_window ORDER BY period ASC) as double))
+             /
+             coalesce((nulls_value / cast(total_value as double))
+                      ,1)-1
+        )
+        end AS diff_nulls_values_from_last_period
     FROM monitoring.statistics_univariate  AS statistics_univariate
 
     ;;
@@ -53,5 +66,11 @@ view: statistics_univariate_lag_metrics {
     type: average
     value_format_name: percent_2
     sql: ${TABLE}.diff_empty_values_from_last_period ;;
+  }
+
+  measure: diff_nulls_values_from_last_period {
+    type: average
+    value_format_name: percent_2
+    sql: ${TABLE}.diff_nulls_values_from_last_period ;;
   }
 }
