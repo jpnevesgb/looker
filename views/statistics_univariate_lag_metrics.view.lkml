@@ -5,6 +5,8 @@ view: statistics_univariate_lag_metrics {
         var_key,
         period,
         time_window,
+        empty_value,
+        total_value,
         case when empty_value = 0
            then 0
         else
@@ -37,8 +39,18 @@ view: statistics_univariate_lag_metrics {
     type: string
     sql: ${TABLE}.time_window ;;
   }
+
+  measure: empty_value {
+    type: sum
+    sql: ${TABLE}.empty_value ;;
+  }
+
+  measure: total_value {
+    type: sum
+    sql: ${TABLE}.total_value ;;
+  }
   measure: diff_empty_values_from_last_period {
-    type: average
+    type: string
     sql: ${TABLE}.diff_empty_values_from_last_period ;;
   }
 }
