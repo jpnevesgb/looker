@@ -11,6 +11,10 @@ view: statistics_univariate_lag_metrics {
         rel_frequency,
         case when empty_value = 0
            then 0
+        when (LAG(empty_value) OVER (PARTITION BY statistics_univariate.var_key,
+                                   statistics_univariate.time_window
+                                   ORDER BY statistics_univariate.period ASC) = 0
+           then 1
         else
            coalesce((empty_value / cast(total_value as double)),1)
            /
@@ -41,6 +45,10 @@ view: statistics_univariate_lag_metrics {
         end AS diff_nulls_values_from_last_period,
         case when rel_frequency = 0
            then 0
+        when (LAG(rel_frequency) OVER (PARTITION BY statistics_univariate.var_key,
+                                     statistics_univariate.time_window
+                                     ORDER BY statistics_univariate.period ASC)) = 0
+           then 1
         else
            (rel_frequency
            /
