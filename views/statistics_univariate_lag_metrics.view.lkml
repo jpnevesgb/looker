@@ -58,6 +58,11 @@ view: statistics_univariate_lag_metrics {
     sql: ${TABLE}.empty_value ;;
   }
 
+  measure: nulls_value {
+    type: sum
+    sql: ${TABLE}.nulls_value ;;
+  }
+
   measure: total_value {
     type: sum
     sql: ${TABLE}.total_value ;;
