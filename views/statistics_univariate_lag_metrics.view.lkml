@@ -24,6 +24,10 @@ view: statistics_univariate_lag_metrics {
         end AS diff_empty_values_from_last_period,
         case when nulls_value = 0
            then 0
+        when LAG(nulls_value) OVER (PARTITION BY statistics_univariate.var_key,
+                                     statistics_univariate.time_window
+                                     ORDER BY statistics_univariate.period ASC) = 0
+           then 1
         else
             coalesce((nulls_value / cast(total_value as double)),1)
             /
