@@ -54,11 +54,13 @@ view: statistics_bucket_outlier {
 
   dimension: upper_limit {
     type: number
+    value_format_name: decimal_2
     sql: ${TABLE}.upper_limit;;
   }
 
   dimension: lower_limit {
     type: number
+    value_format_name: decimal_2
     sql: ${TABLE}.lower_limit ;;
   }
 
