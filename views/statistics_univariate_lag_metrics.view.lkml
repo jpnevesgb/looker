@@ -11,26 +11,22 @@ view: statistics_univariate_lag_metrics {
         case when empty_value = 0
            then 0
         else
-           abs(
              (LAG(empty_value) OVER (PARTITION BY var_key,time_window ORDER BY period ASC)
               /
               CAST(LAG(total_value) OVER (PARTITION BY var_key,time_window ORDER BY period ASC) as double))
              /
              coalesce((empty_value / cast(total_value as double))
                       ,1)-1
-        )
         end AS diff_empty_values_from_last_period,
         case when nulls_value = 0
            then 0
         else
-           abs(
              (LAG(nulls_value) OVER (PARTITION BY var_key,time_window ORDER BY period ASC)
               /
               CAST(LAG(total_value) OVER (PARTITION BY var_key,time_window ORDER BY period ASC) as double))
              /
              coalesce((nulls_value / cast(total_value as double))
                       ,1)-1
-        )
         end AS diff_nulls_values_from_last_period
     FROM monitoring.statistics_univariate  AS statistics_univariate
 
