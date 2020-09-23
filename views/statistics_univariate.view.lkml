@@ -2,6 +2,7 @@ view: statistics_univariate {
   sql_table_name: monitoring.statistics_univariate ;;
   suggestions: yes
 
+
   dimension: var_key {
     type: string
     sql: ${TABLE}.var_key ;;
