@@ -168,7 +168,7 @@ view: statistics_univariate {
 
 
   dimension: is_gbconnect {
-    type: number
+    type: string
     sql: case when ${var_key} in (
           'GUIABOLSO.GB0018-APPLICATION-SCORE-PREQUALIFY'
         ,'GUIABOLSO.V3.ENTRADA_BRUTA.1'
