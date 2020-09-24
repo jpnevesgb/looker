@@ -116,7 +116,7 @@ view: statistics_univariate_lag_metrics {
 
 
 
-  dimension: var_gbconnect {
+  dimension: is_gbconnect {
     type: number
     sql: case when ${var_key} in (
           'GUIABOLSO.GB0018-APPLICATION-SCORE-PREQUALIFY'
@@ -348,7 +348,7 @@ view: statistics_univariate_lag_metrics {
         ,'GUIABOLSO.DATA_DE_REFERENCIA'
         ,'GUIABOLSO.USER.TYPE'
         ,'GUIABOLSO.DIAS_DESDE_PRIMEIRA_CONEXAO'
-        ) then 1 else 0 end
+        ) then 'Y' else 'N' end
             ;;
   }
 }
