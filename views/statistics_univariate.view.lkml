@@ -149,6 +149,17 @@ view: statistics_univariate {
     sql:  (${filled_different_zero_value}) /  cast(${total_value} as double) ;;
   }
 
+  measure: filled_empty_percent {
+    type: number
+    value_format_name: percent_2
+    sql:  (${empty_value}) /  cast(${total_value} as double) ;;
+  }
+
+  measure: null_percent {
+    type: number
+    value_format_name: percent_2
+    sql:  (${nulls_value}) /  cast(${total_value} as double) ;;
+  }
 
   dimension: diff_empty_values_from_last_period{
     type: number
