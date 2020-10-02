@@ -115,7 +115,7 @@ view: statistics_univariate_lag_metrics {
 
   measure: outlier_percent {
     type: average
-    sql: ${TABLE}.total_value / cast(${TABLE}.total_value as double) ;;
+    sql: ${TABLE}.outlier_value / cast(${TABLE}.total_value as double) ;;
   }
 
 
