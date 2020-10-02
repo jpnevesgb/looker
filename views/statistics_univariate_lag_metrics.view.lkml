@@ -8,7 +8,7 @@ view: statistics_univariate_lag_metrics {
         empty_value,
         total_value,
         nulls_value,
-        abs_frequency as outlier_value
+        abs_frequency as outlier_value,
         rel_frequency,
         case when empty_value = 0
            then 0
