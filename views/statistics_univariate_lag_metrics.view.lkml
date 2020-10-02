@@ -8,6 +8,7 @@ view: statistics_univariate_lag_metrics {
         empty_value,
         total_value,
         nulls_value,
+        abs_frequency as outlier_value
         rel_frequency,
         case when empty_value = 0
            then 0
@@ -87,6 +88,11 @@ view: statistics_univariate_lag_metrics {
     sql: ${TABLE}.empty_value ;;
   }
 
+  measure: outlier_value {
+    type: sum
+    sql: ${TABLE}.outlier_value ;;
+  }
+
   measure: nulls_value {
     type: sum
     sql: ${TABLE}.nulls_value ;;
@@ -96,6 +102,23 @@ view: statistics_univariate_lag_metrics {
     type: sum
     sql: ${TABLE}.total_value ;;
   }
+
+  measure: null_percent {
+    type: average
+    sql:${TABLE}.nulls_value / cast(${TABLE}.total_value as double) ;;
+  }
+
+  measure: empty_percent {
+    type: average
+    sql: ${TABLE}.empty_value / cast(${TABLE}.total_value as double) ;;
+  }
+
+  measure: outlier_percent {
+    type: average
+    sql: ${TABLE}.total_value / cast(${TABLE}.total_value as double) ;;
+  }
+
+
   measure: diff_empty_values_from_last_period {
     type: average
     value_format_name: percent_2
