@@ -174,26 +174,26 @@ view: statistics_univariate_lag_metrics {
   }
 
 
-    measure: diff_empty_values_from_last_period {
+    measure: empty_diff_last_period {
       type: average
       value_format_name: percent_2
       sql: ${TABLE}.diff_empty_values_from_last_period ;;
     }
 
-    measure: diff_nulls_values_from_last_period {
+    measure: nulls_diff_last_period {
       type: average
       value_format_name: percent_2
       sql: ${TABLE}.diff_nulls_values_from_last_period;;
     }
 
-    measure: diff_outlier_values_from_last_period {
+    measure: outlier_diff_last_period {
       type: average
       value_format_name: percent_2
       sql: ${TABLE}.diff_outlier_values_from_last_period;;
     }
 
 
-  measure: diff_empty_values_from_six_months_period {
+  measure: empty_diff_six_months {
     type: average
     value_format_name: percent_2
     sql: case when empty_value = 0
@@ -207,7 +207,7 @@ view: statistics_univariate_lag_metrics {
         end ;;
   }
 
-  measure: diff_nulls_values_from_six_months_period {
+  measure: nulls_diff_six_months {
     type: average
     value_format_name: percent_2
     sql: case when nulls_value = 0
@@ -221,7 +221,7 @@ view: statistics_univariate_lag_metrics {
         end ;;
   }
 
-  measure: diff_outlier_values_from_six_months_period {
+  measure: outlier_diff_six_months {
     type: average
     value_format_name: percent_2
     sql: case when outlier_value = 0
