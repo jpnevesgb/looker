@@ -127,62 +127,54 @@ view: statistics_univariate_lag_metrics {
   measure: diff_empty_values_from_last_period {
     type: average
     value_format_name: percent_2
-    sql: case when empty_value = 0
+    sql: case when ${TABLE}.empty_value = 0
            then 0
-        when (LAG(empty_value) OVER (PARTITION BY statistics_univariate.var_key,
-                                   statistics_univariate.time_window
-                                   ORDER BY statistics_univariate.period ASC)) = 0
+        when (LAG(${TABLE}.empty_value) OVER (PARTITION BY ${var_key},${time_window}
+                                   ORDER BY ${period} ASC)) = 0
            then 1
         else
-           coalesce((empty_value / cast(total_value as double)),1)
+           coalesce((${TABLE}.empty_value / cast(total_value as double)),1)
            /
-           (LAG(empty_value) OVER (PARTITION BY statistics_univariate.var_key,
-                                   statistics_univariate.time_window
-                                   ORDER BY statistics_univariate.period ASC)
+           (LAG(${TABLE}.empty_value) OVER (PARTITION BY ${var_key},${time_window}
+                                   ORDER BY ${period} ASC)
               /
-              CAST(LAG(total_value) OVER (PARTITION BY statistics_univariate.var_key,
-                                          statistics_univariate.time_window
-                                          ORDER BY statistics_univariate.period ASC) as double)) -1
+              CAST(LAG(${TABLE}.total_value) OVER (PARTITION BY ${var_key},${time_window}
+                                   ORDER BY ${period} ASC) as double)) -1
         end ;;
   }
 
   measure: diff_nulls_values_from_last_period {
     type: average
     value_format_name: percent_2
-    sql: case when nulls_value = 0
+    sql: case when ${TABLE}.nulls_value = 0
            then 0
-        when (LAG(nulls_value) OVER (PARTITION BY statistics_univariate.var_key,
-                                     statistics_univariate.time_window
-                                     ORDER BY statistics_univariate.period ASC)) = 0
+        when (LAG(${TABLE}.nulls_value) OVER (PARTITION BY ${var_key},${time_window}
+                                   ORDER BY ${period} ASC)) = 0
            then 1
         else
-            coalesce((nulls_value / cast(total_value as double)),1)
+            coalesce((${TABLE}.nulls_value / cast(${TABLE}.total_value as double)),1)
             /
-             (LAG(nulls_value) OVER (PARTITION BY statistics_univariate.var_key,
-                                     statistics_univariate.time_window
-                                     ORDER BY statistics_univariate.period ASC)
+             (LAG(${TABLE}.nulls_value) OVER (PARTITION BY ${var_key},${time_window}
+                                   ORDER BY ${period} ASC)
               /
-              CAST(LAG(total_value) OVER (PARTITION BY statistics_univariate.var_key,
-                                          statistics_univariate.time_window
-                                          ORDER BY statistics_univariate.period ASC) as double)) -1
+              CAST(LAG(${TABLE}.total_value) OVER (PARTITION BY ${var_key},${time_window}
+                                   ORDER BY ${period} ASC) as double)) -1
         end;;
   }
 
   measure: diff_outlier_values_from_last_period {
       type: average
       value_format_name: percent_2
-      sql: case when rel_frequency = 0
+      sql: case when ${TABLE}.rel_frequency = 0
            then 0
-        when (LAG(rel_frequency) OVER (PARTITION BY statistics_univariate.var_key,
-                                     statistics_univariate.time_window
-                                     ORDER BY statistics_univariate.period ASC)) = 0
+        when (LAG(${TABLE}.rel_frequency) OVER (PARTITION BY ${var_key},${time_window}
+                                   ORDER BY ${period} ASC)) = 0
            then 1
         else
-           (rel_frequency
+           (${TABLE}.rel_frequency
            /
-           (LAG(rel_frequency) OVER (PARTITION BY statistics_univariate.var_key,
-                                     statistics_univariate.time_window
-                                     ORDER BY statistics_univariate.period ASC))
+           (LAG(${TABLE}.rel_frequency) OVER (PARTITION BY ${var_key},${time_window}
+                                   ORDER BY ${period} ASC))
             )-1
         end;;
   }
@@ -190,42 +182,42 @@ view: statistics_univariate_lag_metrics {
   measure: diff_empty_values_from_six_months_period {
     type: average
     value_format_name: percent_2
-    sql: case when empty_value = 0
+    sql: case when ${TABLE}.empty_value = 0
            then 0
-        when avg_empty_percent = 0
+        when ${TABLE}.avg_empty_percent = 0
            then 1
         else
-           coalesce((empty_value / cast(total_value as double)),1)
+           coalesce((${TABLE}.empty_value / cast(${TABLE}.total_value as double)),1)
            /
-           avg_empty_percent  -1
+           ${TABLE}.avg_empty_percent  -1
         end ;;
   }
 
   measure: diff_nulls_values_from_six_months_period {
     type: average
     value_format_name: percent_2
-    sql: case when nulls_value = 0
+    sql: case when ${TABLE}.nulls_value = 0
            then 0
-        when avg_nulls_percent = 0
+        when ${TABLE}.avg_nulls_percent = 0
            then 1
         else
-           coalesce((nulls_value / cast(total_value as double)),1)
+           coalesce((${TABLE}.nulls_value / ${TABLE}.cast(total_value as double)),1)
            /
-           avg_nulls_percent  -1
+           ${TABLE}.avg_nulls_percent  -1
         end ;;
   }
 
   measure: diff_outlier_values_from_six_months_period {
     type: average
     value_format_name: percent_2
-    sql: case when outlier_value = 0
+    sql: case when ${TABLE}.outlier_value = 0
            then 0
-        when avg_outlier_percent = 0
+        when ${TABLE}.avg_outlier_percent = 0
            then 1
         else
-           coalesce((outlier_value / cast(total_value as double)),1)
+           coalesce((${TABLE}.outlier_value / cast(${TABLE}.total_value as double)),1)
            /
-           avg_outlier_percent  -1
+           ${TABLE}.avg_outlier_percent  -1
         end ;;
   }
 
