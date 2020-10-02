@@ -12,7 +12,7 @@ view: statistics_univariate_lag_metrics {
         rel_frequency,
         avg_empty_percent,
         avg_nulls_percent,
-        avg_outlier_percent,
+        avg_outlier_percent
 
     FROM monitoring.statistics_univariate  AS statistics_univariate
     left join monitoring.statistics_bucket_outlier  AS statistics_bucket_outlier
