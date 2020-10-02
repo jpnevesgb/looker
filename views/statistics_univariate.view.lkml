@@ -3,6 +3,21 @@ view: statistics_univariate {
   suggestions: yes
 
 
+  dimension: last_period {
+    type: string
+    sql: case when time_window = 'MONTH'
+          then date_format(current_date - interval '1' day, '%Y%m')
+          else date_format(current_date - interval '1' day, '%Y%v')
+        end ;;
+  }
+
+
+  dimension: fl_last_period {
+    type: string
+    sql: case when ${last_period} = ${period} then 'Y' else 'N' end;;
+  }
+
+
   dimension: var_key {
     type: string
     sql: ${TABLE}.var_key ;;
