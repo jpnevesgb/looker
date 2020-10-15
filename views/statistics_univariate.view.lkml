@@ -192,7 +192,14 @@ view: statistics_univariate {
   }
 
 
-
+  dimension: diff_percent_between_bank_x_all{
+    type: number
+    value_format_name: percent_2
+    sql: ${TABLE}.filled_different_zero_percent
+          -
+          (first_value(${TABLE}.filled_different_zero_percent) OVER (PARTITION BY ${TABLE}.var_key,${TABLE}.period ORDER BY ${TABLE}.bank DESC)
+    ;;
+  }
   dimension: is_gbconnect {
     type: string
     sql: case when ${var_key} in (
