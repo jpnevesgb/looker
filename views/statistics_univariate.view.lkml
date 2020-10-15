@@ -197,7 +197,7 @@ view: statistics_univariate {
     value_format_name: percent_2
     sql: ${filled_different_zero_percent}
           -
-          (first_value(${filled_different_zero_percent}) OVER (PARTITION BY ${TABLE}.var_key,${TABLE}.period ORDER BY ${TABLE}.bank DESC)
+          first_value(${filled_different_zero_percent}) OVER (PARTITION BY ${TABLE}.var_key,${TABLE}.period ORDER BY ${TABLE}.bank DESC)
     ;;
   }
   dimension: is_gbconnect {
