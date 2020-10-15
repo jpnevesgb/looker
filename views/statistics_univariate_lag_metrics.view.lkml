@@ -18,6 +18,7 @@ view: statistics_univariate_lag_metrics {
         case when empty_value = 0
            then 0
         when (LAG(empty_value) OVER (PARTITION BY statistics_univariate.var_key,
+                                   statistics_univariate.bank,
                                    statistics_univariate.time_window
                                    ORDER BY statistics_univariate.period ASC)) = 0
            then 1
@@ -25,16 +26,19 @@ view: statistics_univariate_lag_metrics {
            coalesce((empty_value / cast(total_value as double)),1)
            /
            (LAG(empty_value) OVER (PARTITION BY statistics_univariate.var_key,
+                                   statistics_univariate.bank,
                                    statistics_univariate.time_window
                                    ORDER BY statistics_univariate.period ASC)
               /
               CAST(LAG(total_value) OVER (PARTITION BY statistics_univariate.var_key,
+                                          statistics_univariate.bank,
                                           statistics_univariate.time_window
                                           ORDER BY statistics_univariate.period ASC) as double)) -1
         end AS diff_empty_values_from_last_period,
         case when nulls_value = 0
            then 0
         when (LAG(nulls_value) OVER (PARTITION BY statistics_univariate.var_key,
+                                     statistics_univariate.bank,
                                      statistics_univariate.time_window
                                      ORDER BY statistics_univariate.period ASC)) = 0
            then 1
@@ -42,16 +46,19 @@ view: statistics_univariate_lag_metrics {
             coalesce((nulls_value / cast(total_value as double)),1)
             /
              (LAG(nulls_value) OVER (PARTITION BY statistics_univariate.var_key,
+                                     statistics_univariate.bank,
                                      statistics_univariate.time_window
                                      ORDER BY statistics_univariate.period ASC)
               /
               CAST(LAG(total_value) OVER (PARTITION BY statistics_univariate.var_key,
+                                          statistics_univariate.bank,
                                           statistics_univariate.time_window
                                           ORDER BY statistics_univariate.period ASC) as double)) -1
         end AS diff_nulls_values_from_last_period,
         case when rel_frequency = 0
            then 0
         when (LAG(rel_frequency) OVER (PARTITION BY statistics_univariate.var_key,
+                                     statistics_univariate.bank,
                                      statistics_univariate.time_window
                                      ORDER BY statistics_univariate.period ASC)) = 0
            then 1
@@ -59,6 +66,7 @@ view: statistics_univariate_lag_metrics {
            (rel_frequency
            /
            (LAG(rel_frequency) OVER (PARTITION BY statistics_univariate.var_key,
+                                     statistics_univariate.bank,
                                      statistics_univariate.time_window
                                      ORDER BY statistics_univariate.period ASC))
             )-1
