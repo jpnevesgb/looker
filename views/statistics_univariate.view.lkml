@@ -79,6 +79,12 @@ view: statistics_univariate {
     sql: ${TABLE}.max_value ;;
   }
 
+  measure: total_occurances {
+    type: max
+    sql: ${TABLE}.total_value ;;
+  }
+
+
   measure: min_value {
     type: sum
     sql: ${TABLE}.min_value ;;
