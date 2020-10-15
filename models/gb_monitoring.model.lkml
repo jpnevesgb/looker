@@ -13,13 +13,30 @@ persist_with: gb_monitoring_default_datagroup
 
 explore: statistics_univariate {
   hidden: no
+  join: dim_bank {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${statistics_univariate.bank} = ${dim_bank.id_bank} ;;
+  }
 
 }
 
 explore: statistics_bucket_outlier {
   hidden: no
+  join: dim_bank {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${statistics_bucket_outlier.bank} = ${dim_bank.id_bank} ;;
+  }
+
 }
 
 explore: statistics_univariate_lag_metrics {
   hidden: no
+  join: dim_bank {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${statistics_univariate_lag_metrics.bank} = ${dim_bank.id_bank} ;;
+  }
+
 }

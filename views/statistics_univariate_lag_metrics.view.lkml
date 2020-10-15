@@ -5,6 +5,7 @@ view: statistics_univariate_lag_metrics {
         statistics_univariate.var_key,
         statistics_univariate.period,
         statistics_univariate.time_window,
+        statistics_univariate.bank,
         empty_value,
         total_value,
         nulls_value,
@@ -69,12 +70,14 @@ view: statistics_univariate_lag_metrics {
       on statistics_univariate.var_key = statistics_bucket_outlier.var_key
       and statistics_univariate.period = statistics_bucket_outlier.period
       and statistics_univariate.time_window = statistics_bucket_outlier.time_window
+      and statistics_univariate.bank = statistics_bucket_outlier.bank
       and statistics_bucket_outlier.category = 'OUTLIER'
 
     left join(
         select
             var_key
             ,time_window
+            ,bank
             ,avg(empty_percent) as avg_empty_percent
             ,avg(null_percent) as avg_nulls_percent
             ,avg(outlier_percent) as avg_outlier_percent
@@ -92,6 +95,7 @@ view: statistics_univariate_lag_metrics {
                on t1.var_key = t2.var_key
               and t1.period = t2.period
               and t1.time_window = t2.time_window
+              and t1.bank = t2.bank
               and t2.category = 'OUTLIER'
 
               where t1.period >=
@@ -100,10 +104,11 @@ view: statistics_univariate_lag_metrics {
                     else  date_format( current_date- interval '6' month, '%Y%v')
                 end
             )
-            group by 1,2
+            group by 1,2,3
       ) as historic
             on statistics_univariate.var_key = historic.var_key
             and statistics_univariate.time_window = historic.time_window
+            and statistics_univariate.bank = historic.bank
 
 
     ;;
@@ -121,6 +126,13 @@ view: statistics_univariate_lag_metrics {
     type: string
     sql: case when ${last_period} = ${period} then 'Y' else 'N' end;;
   }
+
+
+  dimension: bank {
+    type: string
+    sql: ${TABLE}.bank ;;
+  }
+
 
   dimension: var_key {
     type: string
