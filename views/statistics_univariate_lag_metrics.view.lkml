@@ -92,7 +92,7 @@ view: statistics_univariate_lag_metrics {
 
             from (
 
-              select  t1.var_key, t1.period, t1.time_window,
+              select  t1.var_key, t1.period, t1.time_window, t1.bank,
                   empty_value / cast(total_value as double) as empty_percent,
                   nulls_value / cast(total_value as double) as null_percent,
                   rel_frequency as outlier_percent
