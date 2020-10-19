@@ -354,4 +354,9 @@ view: statistics_univariate {
     type: count
     drill_fields: []
   }
+
+  measure: distinct_count_var_key {
+    type: count_distinct
+    sql:  ${TABLE}.var_key;;
+  }
 }
