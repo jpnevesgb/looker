@@ -9,7 +9,11 @@ view: dim_bank {
           UNION ALL
           SELECT
             '99' as id_bank,
-            'MULTIPLE BANKS' as bank_name;;
+            'MULTIPLE BANKS' as bank_name
+          UNION ALL
+          SELECT
+            'ALL' as id_bank,
+            'ALL BANKS' as bank_name;;
     }
 
     dimension: bank_name {
