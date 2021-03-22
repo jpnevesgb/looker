@@ -3,7 +3,7 @@ view: lcs1_performance {
   suggestions: no
 
   dimension: fk_financial_entity {
-    type: string
+    type: number
     sql: ${TABLE}.fk_financial_entity ;;
   }
 
@@ -30,6 +30,50 @@ view: lcs1_performance {
   dimension: time_window {
     type: string
     sql: ${TABLE}.time_window ;;
+  }
+
+  dimension: entity_name {
+    type: string
+    sql: case when ${fk_financial_entity} = 1
+          then 'BANKFACIL'
+           when ${fk_financial_entity} = 1
+          then 'BB'
+           when ${fk_financial_entity} = 1
+          then 'BCREDI'
+           when ${fk_financial_entity} = 1
+          then 'BRADESCO'
+           when ${fk_financial_entity} = 1
+          then 'CAIXA'
+           when ${fk_financial_entity} = 1
+          then 'CBSS'
+           when ${fk_financial_entity} = 1
+          then 'CREDITAS'
+           when ${fk_financial_entity} = 1
+          then 'EMPRESTIMO_SIM'
+           when ${fk_financial_entity} = 1
+          then 'FOCUS'
+           when ${fk_financial_entity} = 1
+          then 'GERU'
+           when ${fk_financial_entity} = 1
+          then 'GUIABOLSO'
+           when ${fk_financial_entity} = 1
+          then 'IBI'
+           when ${fk_financial_entity} = 1
+          then 'ITAU'
+           when ${fk_financial_entity} = 1
+          then 'LENDICO'
+           when ${fk_financial_entity} = 1
+          then 'PORTOCRED'
+           when ${fk_financial_entity} = 1
+          then 'SANTANDER'
+           when ${fk_financial_entity} = 1
+          then 'SEMEAR'
+           when ${fk_financial_entity} = 1
+          then 'SIMPLIC'
+           when ${fk_financial_entity} = 1
+          then 'VOTORANTIM'
+          else 'ALL'
+        end ;;
   }
 
   measure: metric_value_tratado {

@@ -43,7 +43,14 @@ explore: statistics_univariate_lag_metrics {
 
 explore: lcs1_performance {
   hidden: no
+  join: dim_financial_entity {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${lcs1_performance.fk_financial_entity} = ${lcs1_performance.fk_financial_entity} ;;
+  }
+
 }
+
 
 explore: lcs1_stability_gbc {
   hidden: no
