@@ -3,7 +3,7 @@ view: lcs1_performance {
   suggestions: no
 
   dimension: fk_financial_entity {
-    type: number
+    type: string
     sql: ${TABLE}.fk_financial_entity ;;
   }
 
