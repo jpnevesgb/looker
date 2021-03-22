@@ -40,3 +40,27 @@ explore: statistics_univariate_lag_metrics {
   }
 
 }
+
+explore: lcs1_performance {
+  hidden: no
+}
+
+explore: lcs1_stability_gbc {
+  hidden: no
+  join: dim_date {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${lcs1_stability_gbc.period} = ${dim_date.id_date} ;;
+  }
+
+}
+
+explore: lcs1_stability_mau {
+  hidden: no
+  join: dim_date {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${lcs1_stability_mau.period} = ${dim_date.id_date} ;;
+  }
+
+}
