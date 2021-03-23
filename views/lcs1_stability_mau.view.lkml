@@ -36,4 +36,9 @@ view: lcs1_stability_mau {
     type: count
     drill_fields: []
   }
+
+  measure: metric_value_tratado {
+    type: sum
+    sql: ${TABLE}.metric_value ;;
+  }
 }
