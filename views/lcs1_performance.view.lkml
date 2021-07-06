@@ -32,6 +32,18 @@ view: lcs1_performance {
     sql: ${TABLE}.time_window ;;
   }
 
+  dimension: entity_name_teste {
+    type:  string
+    sql: SELECT
+          CASE WHEN A.fk_financial_entity = 'ALL' then 'ALL' else B.financial_entity_name end
+          FROM
+          monitoring.lcs1_performance A
+          LEFT JOIN layer3.dim_financial_entity B
+          on A.fk_financial_entity = B.id_financial_entity
+    ;;
+
+  }
+
   dimension: entity_name {
     type: string
     sql: case when ${fk_financial_entity} = '1'
