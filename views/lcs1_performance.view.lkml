@@ -34,7 +34,7 @@ view: lcs1_performance {
 
   dimension: entity_name_teste {
     type:  string
-    sql: SELECT
+    sql:
           CASE WHEN A.fk_financial_entity = 'ALL' then 'ALL' else B.financial_entity_name end
           FROM
           monitoring.lcs1_performance A
