@@ -71,3 +71,7 @@ explore: lcs1_stability_mau {
   }
 
 }
+
+explore: result {
+  hidden: no
+}
