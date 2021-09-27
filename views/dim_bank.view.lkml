@@ -9,16 +9,16 @@ view: dim_bank {
           UNION ALL
           SELECT
             '99' as id_bank,
-            'MULTIPLE BANKS' as bank_name
+            'MULTIPLE BANKS' as name
           UNION ALL
           SELECT
             'ALL' as id_bank,
-            'ALL BANKS' as bank_name;;
+            'ALL BANKS' as name;;
     }
 
-    dimension: bank_name {
+    dimension: name {
       type: string
-      sql: ${TABLE}.bank_name ;;
+      sql: ${TABLE}.name ;;
     }
 
     dimension: id_bank {
@@ -29,6 +29,6 @@ view: dim_bank {
 
     measure: count {
       type: count
-      drill_fields: [bank_name]
+      drill_fields: [name]
     }
   }
