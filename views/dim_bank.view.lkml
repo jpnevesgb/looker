@@ -3,7 +3,7 @@ view: dim_bank {
     sql:
           SELECT
             cast(id_bank as varchar(10)) as id_bank,
-            bank_name
+            name
           FROM layer4.dim_bank
           WHERE id_bank in(1,2,3,4,5,6,11,12,13)
           UNION ALL
