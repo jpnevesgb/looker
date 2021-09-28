@@ -18,6 +18,7 @@ view: dim_bank {
     }
 
     dimension: name {
+      type: string
       label: "bank_name"
       sql: ${TABLE}.name ;;
     }
