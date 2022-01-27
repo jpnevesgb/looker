@@ -2,6 +2,9 @@ connection: "athena"
 
 # include all the views
 include: "/views/*.view"
+include: "/views_maas/*.view"
+
+include: "/dashboards/*.dashboard"
 
 datagroup: gb_monitoring_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -74,4 +77,34 @@ explore: lcs1_stability_mau {
 
 explore: result {
   hidden: no
+}
+
+explore: statistics_univariate_maas {
+  hidden: no
+  join: dim_bank {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${statistics_univariate_maas.bank} = ${dim_bank.id_bank} ;;
+  }
+
+}
+
+explore: statistics_bucket_outlier_maas {
+  hidden: no
+  join: dim_bank {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${statistics_bucket_outlier_maas.bank} = ${dim_bank.id_bank} ;;
+  }
+
+}
+
+explore: statistics_univariate_lag_metrics_maas {
+  hidden: no
+  join: dim_bank {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${statistics_univariate_lag_metrics_maas.bank} = ${dim_bank.id_bank} ;;
+  }
+
 }
