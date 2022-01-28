@@ -720,7 +720,7 @@
   - name: Variável
     title: Variável
     type: field_filter
-    default_value: '"GUIABOLSO.DIAS_COM_TRANSACAO_90_DIAS"'
+    default_value: '"GUIABOLSO.V2.SAIDAS_BRUTA_MEDIA"'
     allow_multiple_values: false
     required: true
     model: gb_monitoring

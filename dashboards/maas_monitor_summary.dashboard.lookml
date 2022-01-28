@@ -72,7 +72,6 @@
     listen:
       Janela de Tempo: statistics_univariate_maas.time_window
       Variáveis: statistics_univariate_maas.var_key
-      Somente GBConnect?: statistics_univariate_maas.is_gbconnect
       Banco: dim_bank.name
     row: 0
     col: 0
@@ -127,7 +126,6 @@
     listen:
       Janela de Tempo: statistics_univariate_maas.time_window
       Variáveis: statistics_univariate_maas.var_key
-      Somente GBConnect?: statistics_univariate_maas.is_gbconnect
       Banco: dim_bank.name
     row: 0
     col: 6
@@ -183,7 +181,6 @@
     listen:
       Janela de Tempo: statistics_univariate_maas.time_window
       Variáveis: statistics_univariate_maas.var_key
-      Somente GBConnect?: statistics_univariate_maas.is_gbconnect
       Banco: dim_bank.name
     row: 0
     col: 12
@@ -234,7 +231,6 @@
       Janela de Tempo: statistics_univariate_lag_metrics_maas.time_window
       Variáveis: statistics_univariate_lag_metrics_maas.var_key
       Período mais recente?: statistics_univariate_lag_metrics_maas.fl_last_period
-      Somente GBConnect?: statistics_univariate_lag_metrics_maas.is_gbconnect
       Banco: dim_bank.name
       Ano/Mês: statistics_univariate_lag_metrics_maas.period
     row: 9
@@ -308,7 +304,6 @@
       Janela de Tempo: statistics_univariate_maas.time_window
       Variáveis: statistics_univariate_maas.var_key
       Período mais recente?: statistics_univariate_maas.fl_last_period
-      Somente GBConnect?: statistics_univariate_maas.is_gbconnect
       Banco: dim_bank.name
       Ano/Mês: statistics_univariate_maas.period
     row: 29
@@ -361,7 +356,6 @@
     listen:
       Janela de Tempo: statistics_univariate_maas.time_window
       Variáveis: statistics_univariate_maas.var_key
-      Somente GBConnect?: statistics_univariate_maas.is_gbconnect
       Banco: dim_bank.name
     row: 0
     col: 18
@@ -411,7 +405,6 @@
       Janela de Tempo: statistics_univariate_lag_metrics_maas.time_window
       Variáveis: statistics_univariate_lag_metrics_maas.var_key
       Período mais recente?: statistics_univariate_lag_metrics_maas.fl_last_period
-      Somente GBConnect?: statistics_univariate_lag_metrics_maas.is_gbconnect
       Banco: dim_bank.name
       Ano/Mês: statistics_univariate_lag_metrics_maas.period
     row: 18
@@ -462,7 +455,6 @@
       Janela de Tempo: statistics_univariate_lag_metrics_maas.time_window
       Variáveis: statistics_univariate_lag_metrics_maas.var_key
       Período mais recente?: statistics_univariate_lag_metrics_maas.fl_last_period
-      Somente GBConnect?: statistics_univariate_lag_metrics_maas.is_gbconnect
       Banco: dim_bank.name
       Ano/Mês: statistics_univariate_lag_metrics_maas.period
     row: 18
@@ -535,7 +527,6 @@
       Janela de Tempo: statistics_univariate_maas.time_window
       Variáveis: statistics_univariate_maas.var_key
       Período mais recente?: statistics_univariate_maas.fl_last_period
-      Somente GBConnect?: statistics_univariate_maas.is_gbconnect
       Banco: dim_bank.name
       Ano/Mês: statistics_univariate_maas.period
     row: 38
@@ -609,7 +600,6 @@
       Janela de Tempo: statistics_univariate_maas.time_window
       Variáveis: statistics_univariate_maas.var_key
       Período mais recente?: statistics_univariate_maas.fl_last_period
-      Somente GBConnect?: statistics_univariate_maas.is_gbconnect
       Banco: dim_bank.name
       Ano/Mês: statistics_univariate_maas.period
     row: 29
@@ -684,7 +674,6 @@
       Janela de Tempo: statistics_univariate_maas.time_window
       Variáveis: statistics_univariate_maas.var_key
       Período mais recente?: statistics_univariate_maas.fl_last_period
-      Somente GBConnect?: statistics_univariate_maas.is_gbconnect
       Banco: dim_bank.name
       Ano/Mês: statistics_univariate_maas.period
     row: 9
@@ -710,7 +699,6 @@
     required: false
     model: gb_monitoring
     explore: statistics_univariate_maas
-    listens_to_filters: ['Somente GBConnect?']
     field: statistics_univariate_maas.var_key
   - name: Período mais recente?
     title: Período mais recente?
@@ -722,16 +710,6 @@
     explore: statistics_univariate_maas
     listens_to_filters: []
     field: statistics_univariate_maas.fl_last_period
-  - name: Somente GBConnect?
-    title: Somente GBConnect?
-    type: field_filter
-    default_value: Y
-    allow_multiple_values: true
-    required: false
-    model: gb_monitoring
-    explore: statistics_univariate_maas
-    listens_to_filters: []
-    field: statistics_univariate_maas.is_gbconnect
   - name: Banco
     title: Banco
     type: field_filter

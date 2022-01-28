@@ -71,7 +71,6 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen:
-      Flag GB Connect: statistics_univariate_maas.is_gbconnect
       Variáveis: statistics_univariate_maas.var_key
       Bancos: dim_bank.name
     row: 25
@@ -203,7 +202,6 @@
     series_types: {}
     listen:
       Ano/Mês: statistics_univariate_maas.period
-      Flag GB Connect: statistics_univariate_maas.is_gbconnect
       Variáveis: statistics_univariate_maas.var_key
       Bancos: dim_bank.name
     row: 0
@@ -221,16 +219,6 @@
     explore: statistics_univariate_maas
     listens_to_filters: [Janela de Tempo]
     field: statistics_univariate_maas.period
-  - name: Flag GB Connect
-    title: Flag GB Connect
-    type: field_filter
-    default_value: Y
-    allow_multiple_values: true
-    required: false
-    model: gb_monitoring
-    explore: statistics_univariate_maas
-    listens_to_filters: []
-    field: statistics_univariate_maas.is_gbconnect
   - name: Variáveis
     title: Variáveis
     type: field_filter
